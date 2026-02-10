@@ -46,7 +46,7 @@ export default function KanbanBoard() {
     const columns = ["To Do", "In Progress", "Done"];
     return (
         <div style={{ padding: "20px" }}>
-
+            <h1>Kanban Board</h1>
             <div style={{ marginBottom: "20px" }}>
                 <input
                     value={title}
