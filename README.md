@@ -1,15 +1,51 @@
-# 📝 WebSocket-Powered Kanban Board - Candidate Guide
+---
 
-## 📌 Project Overview
+# 🚀 Real-Time Kanban Board (WebSocket Based)
 
-This project involves building a **real-time Kanban board** where users can **add, update, delete, move tasks between columns, upload attachments, assign priority & category, and visualize progress**.
+A full-stack Kanban board application that enables users to manage tasks efficiently with real-time updates.  
+Built to demonstrate practical knowledge of *WebSockets, frontend-backend communication, and automated testing*.
 
-The goal is to assess proficiency in:  
-✅ **React** (for UI)  
-✅ **WebSockets (Socket.IO)** (for real-time updates)  
-✅ **Vitest + React Testing Library** (for unit & integration testing)  
-✅ **Playwright** (for end-to-end testing)
+---
 
+## 📌 Features
+
+✅ Create tasks  
+✅ Delete tasks  
+✅ Move tasks between columns using action buttons  
+✅ Real-time synchronization with WebSockets  
+---
+
+## 🧪 Testing
+
+This project includes automated tests to validate core Kanban board functionality and WebSocket interactions.
+
+### Testing Tools
+- **Vitest** – Fast unit testing framework  
+- **React Testing Library** – Component testing from a user perspective  
+- **Socket.IO Mocking** – Simulated WebSocket behavior for predictable tests  
+
+---
+
+### ✅ Covered Test Cases
+
+**Unit Tests**
+- Renders the Kanban board UI correctly  
+- Allows users to create a task  
+- Emits `task:create` event with correct payload  
+- Displays tasks received from the WebSocket  
+- Deletes tasks and emits `task:delete` event  
+
+**Integration-Level Validation**
+- Verifies that the client responds to WebSocket events  
+- Ensures UI updates when tasks are created or deleted  
+
+---
+
+### ▶️ Run Tests
+
+```bash
+npm run test
+```
 ---
 
 ## 📂 Project Structure
@@ -32,163 +68,51 @@ websocket-kanban-vitest-playwright
 │
 └── README.md                     # Project guide
 ```
+---
 
 ---
 
-## 📌 What is Kanban?
+## ⚙️ Installation & Setup
 
-Kanban is a **workflow management system** that visually organizes tasks into columns representing different stages of work.
+### Clone the repository
 
-### 🏗 Example Board:
-
-```
-To Do       In Progress      Done
-----------------------------------
-Task A   →  Task B        →  Task C
-Task D   →  Task E        →  Task F
+```bash
+git clone https://github.com/keshavgit23/websocket-kanban-vitest-playwright-2026.git
+cd websocket-kanban-vitest-playwright-2026
 ```
 
-### 🔍 Reference Applications:
+### Install dependencies
 
-| Kanban App      | Description                 | Link                                                                   |
-| --------------- | --------------------------- | ---------------------------------------------------------------------- |
-| **Trello**      | Task management tool        | [trello.com](https://trello.com/)                                      |
-| **Jira Kanban** | Agile development workflows | [atlassian.com/software/jira](https://www.atlassian.com/software/jira) |
-| **ClickUp**     | Project management tool     | [clickup.com](https://www.clickup.com/)                                |
+### Backend
+```bash
+cd backend
+npm install
+node server.js
+```
 
-🔗 **Open-source Kanban boards:**
-
-- **[Wekan](https://github.com/wekan/wekan)** – Self-hosted Trello alternative
-- **[Planka](https://github.com/plankanban/planka)** – Open-source React Kanban
-
----
-
-## 🚀 Take Home Task
-
-### 🔹 Features to Implement
-
-- Create, update, delete, and move tasks between columns.
-- Upload attachments for tasks.
-- Assign task priority & category using a select dropdown.
-- Visualize task progress using a graph/chart.
-- Sync updates in real-time using WebSockets.
-- Test the application using Vitest + React testing library (unit/integration) and Playwright (E2E tests).
-
-### 1️⃣ Backend (Node.js + WebSocket)
-
-- Set up a WebSocket (Socket.IO or native WebSockets) server.
-- Store tasks in memory or use a database (MongoDB preferred).
-- Implement WebSocket events for:
-  - `task:create` → Adds a new task.
-  - `task:update` → Updates a task (title, description, priority, category, attachments).
-  - `task:move` → Moves a task between columns.
-  - `task:delete` → Removes a task.
-  - `sync:tasks` → Sends all tasks to newly connected clients.
-
-### 2️⃣ Frontend (React + WebSocket)
-
-Kanban Board Features:
-
-- Implement a Kanban board UI with the following columns:
-  - To Do
-  - In Progress
-  - Done
-- Tasks should be draggable between columns using React DnD or a similar library.
-- The UI should update in real-time when a user makes changes.
-- Display a loading indicator when waiting for the server to sync.
-
-Additional UI Features:
-
-1. **Priority & Category Selection (Dropdown)**
-
-   - Each task should have a priority (Low, Medium, High).
-   - Each task should have a category (Bug, Feature, Enhancement).
-   - Implement using a React select dropdown (e.g., react-select).
-
-2. **File Upload**
-
-   - Users can upload attachments (e.g., images, PDFs) to tasks.
-   - Show a preview of the uploaded file (if it's an image).
-   - Store the file URL in state (simulated backend storage).
-
-3. **Task Progress Graph (Chart.js or Recharts)**
-   - Implement a task progress chart that shows:
-     - Number of tasks in each column.
-     - The percentage of completion (Done vs. total tasks).
-   - Update the graph in real-time as tasks move.
-
-### 3️⃣ Unit & Integration Testing (Vitest + React Testing Library)
-
-- Unit test core functions:
-  - Adding, updating, and deleting tasks.
-  - WebSocket connection logic.
-- Integration test:
-  - Ensure WebSocket updates correctly sync state across multiple clients.
-  - Validate drag-and-drop functionality for moving tasks.
-
-### 4️⃣ E2E Testing (Playwright)
-
-✅ **Kanban Board**
-
-- User can create a task.
-- User can drag and drop a task between columns.
-- UI updates in real-time when another user modifies tasks.
-- User can delete a task and see it removed.
-
-✅ **Dropdown Select Testing**
-
-- User can select a priority level.
-- User can change the task category and verify the update.
-
-✅ **File Upload Testing**
-
-- User can upload a file.
-- Uploaded files display correctly.
-- Invalid files (e.g., non-supported formats) show an error message.
-
-✅ **Graph Testing**
-
-- Task counts update correctly in the graph as tasks move.
-- Graph re-renders dynamically when new tasks are added.
+### Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
 ---
 
-## 📊 Evaluation Criteria
+## 🎯 What I Learned
 
-| **Criteria**                      | **Weightage** | **Key Points**                                     |
-| --------------------------------- | ------------- | -------------------------------------------------- |
-| **WebSocket Implementation**      | 10%           | Real-time updates, event handling, error handling  |
-| **React Component Structure**     | 10%           | Proper separation of concerns, reusable components |
-| **Testing**                       | 50%           | Unit, integration, and E2E tests passing           |
-| **Code Quality & Best Practices** | 20%           | Clean, well-documented, readable code              |
-| **UI & UX**                       | 10%           | Intuitive design, responsive layout                |
+- Implementing real-time communication using WebSockets
+- Managing state across client and server
+- Writing reliable automated tests
+- Structuring a full-stack project
+- Debugging real-world async issues
 
 ---
 
-## 🔗 Useful Resources
-
-📘 **Kanban & WebSockets**
-
-- [What is Kanban? (Atlassian)](https://www.atlassian.com/agile/kanban)
-- [WebSockets in Node.js (MDN)](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)
-
-🧪 **Vitest (Unit & Integration Testing)**
-
-- [Frontend Testing Guide](https://www.netguru.com/blog/front-end-testing)
-- [Vitest Docs](https://vitest.dev/)
-- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
-
-🎭 **Playwright (E2E Testing)**
-
-- [Playwright Docs](https://playwright.dev/)
-
 ---
 
-## 🚀 Next Steps for Candidates
+👉 **"This project was completed as part of a technical assignment."**
 
-🎯 Implement **WebSocket logic** in the Kanban board  
-🎯 Add **state management** for tasks  
-🎯 Write **unit, integration, and E2E tests**  
-🎯 Deploy and verify real-time updates
+### Feedback and contributions are welcome. If you found this project valuable, consider starring the repository.
 
-🛠 **Final Tip:** Pay attention to **code quality, real-time interactions, and testing coverage**. Good luck! 🚀
+---
