@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { socket } from "../services/socket";
-import { useTasks } from "../../hooks/useTasks";
+import { useTasks } from "../hooks/useTasks";
 
 export default function KanbanBoard() {
     const {tasks} = useTasks();
