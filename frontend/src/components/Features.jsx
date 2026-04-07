@@ -15,7 +15,7 @@ export default function Features() {
                 </div>
 
                 <div className="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition hover:shadow-teal-200">
-                    <h3 className="text-xl font-semibold ">Collaborative Board</h3>
+                    <h3 className="text-xl font-semibold ">Media support</h3>
                     <p className="text-medium text-gray-700 mt-3">Upload Attachments to tasks</p>
                 </div>
             </div>
