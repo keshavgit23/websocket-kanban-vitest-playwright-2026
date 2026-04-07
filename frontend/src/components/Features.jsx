@@ -1,6 +1,6 @@
 export default function Features() {
     return (
-        <section className="flex flex-row md:flex-col items-start justify-between px-8 md:px-20 py-16 gap-6 md:gap-10 bg-gray-50 text-center">
+        <section className="px-8 md:px-20 py-16 gap-6 md:gap-10 bg-gray-50 text-center md:text-left">
             <h2 className="text-4xl font-bold text-teal-500">Features</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8"> {/*all cards */}
