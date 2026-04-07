@@ -2,8 +2,8 @@ import kanban_board from "../assets/kanban_board.jpeg"
 
 export default function Hero(){
     return (
-        <section className="min-h-screen flex flex-col md:flex-row items-center justify-between px-8 md:px-20 py-8 gap-6 md:gap-8">
-            <div className="flex flex-col gap-8 text-center md:text-left items-center md:items-start">
+        <section className="min-h-screen flex flex-col md:flex-row items-center justify-center px-8 md:px-20 py-8 gap-10">
+        <div className="flex flex-col gap-1 text-center md:text-left items-center md:items-start mb-5">
             <div className="max-w-xl">
                 <h1 className="text-4xl md:text-5xl font-bold text-teal-600 leading-tight">Manage your tasks. <br /> Collaborate in real time</h1>
                 {/* <p>A fast and collaborative Kanban board built with React and Socket.io</p> */}
@@ -16,9 +16,9 @@ export default function Hero(){
                     Github
                 </button>
             </div>
-            </div>
+        </div>
             <div>
-                <img src={kanban_board} alt="Kanban Board" className="w-full max-w-md md:max-w-lg rounded-xl shadow-2xl mt-6 md:mt-0"></img>
+                <img src={kanban_board} alt="Kanban Board" className="w-full max-w-md md:max-w-lg rounded-xl shadow-2xl mt-3 md:mt-0"></img>
             </div>
         </section>
     )
