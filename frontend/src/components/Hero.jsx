@@ -14,7 +14,7 @@ export default function Hero(){
                 <button onClick={()=>navigate("/board")} className="text-xl text-black bg-teal-100 px-6 py-4 font-bold hover:bg-teal-600 hover:text-white rounded-lg cursor-pointer">
                     Try Now
                 </button>
-                <button className="text-lg text-black font-medium hover:text-teal-600  hover:underline decoration-2 transition duration-200">
+                <button onClick={()=>window.open("https://github.com/keshavgit23/websocket-kanban-vitest-playwright-2026","_blank","noopener","noreferrer")}className="text-lg text-black font-medium hover:text-teal-600  hover:underline decoration-2 transition duration-200">
                     Github
                 </button>
             </div>
