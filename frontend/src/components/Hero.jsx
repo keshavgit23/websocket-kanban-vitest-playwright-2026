@@ -1,6 +1,8 @@
 import kanban_board from "../assets/kanban_board.jpeg"
+import { useNavigate } from "react-router-dom"
 
 export default function Hero(){
+    const navigate = useNavigate()
     return (
         <section className="min-h-screen flex flex-col md:flex-row items-center justify-center px-8 md:px-20 py-8 gap-10">
         <div className="flex flex-col gap-1 text-center md:text-left items-center md:items-start mb-5">
@@ -9,7 +11,7 @@ export default function Hero(){
                 {/* <p>A fast and collaborative Kanban board built with React and Socket.io</p> */}
             </div>
             <div className="mt-4 flex gap-8">
-                <button className="text-xl text-black bg-teal-100 px-6 py-4 font-bold hover:bg-teal-600 hover:text-white rounded-lg cursor-pointer">
+                <button onClick={()=>navigate("/board")} className="text-xl text-black bg-teal-100 px-6 py-4 font-bold hover:bg-teal-600 hover:text-white rounded-lg cursor-pointer">
                     Try Now
                 </button>
                 <button className="text-lg text-black font-medium hover:text-teal-600  hover:underline decoration-2 transition duration-200">
