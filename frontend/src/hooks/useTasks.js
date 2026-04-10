@@ -12,7 +12,7 @@ export function useTasks() {
         socket.on("task:update", (updatedTask) => setTasks((prev) => prev.map((t) => t.id === updatedTask.id ? updatedTask : t))
         );
 
-        socket.on("task:move", ({ id, newColumn }) => setTasks((prev) => prev.map((t) => (t.id === id ? { ...t, column: newColumn } : t)))
+       socket.on("task:move", ({ id, newColumn }) => setTasks((prev) => prev.map((t) => (t.id === id ? { ...t, column: newColumn } : t)))
         );
 
         socket.on("task:delete", (id) => setTasks((prev) => prev.filter((t) => t.id !== id))

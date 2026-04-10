@@ -3,7 +3,7 @@ import { socket } from "../services/socket";
 import { useTasks } from "../hooks/useTasks";
 
 export default function KanbanBoard() {
-    const {tasks} = useTasks();
+    const { tasks } = useTasks();
     const [title, setTitle] = useState("");
 
     const createTask = () => {
@@ -21,90 +21,49 @@ export default function KanbanBoard() {
 
     const columns = ["To Do", "In Progress", "Done"];
     return (
-        <div style={{ padding: "20px" }}>
-            <h1>Kanban Board</h1>
-            <div style={{ marginBottom: "20px" }}>
+        <div className="min-h-screen bg-gray-100 p-6">
+            <h1 className="text-3xl font-bold text-gray-800 mb-3">Kanban Board</h1>
+
+            <div className="flex gap-3 mb-8">
                 <input
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     placeholder="Enter task..."
-                    style={{
-                        padding: "8px",
-                        width: "250px",
-                        marginRight: "10px"
-                }}
-                />
+                    className="px-4 py-2 rounded-xl w-72 border outline-none focus:text-black focus:ring-2 focus:ring-teal-500" ></input>
                 <button
                     onClick={createTask}
-                    style={{
-                        padding: "8px 12px",
-                        cursor: "pointer"
-                    }}
-                >
-                    Add Task
-                </button>
+                    className="bg-teal-600 rounded-lg px-6 py-0 text-white hover:bg-teal-700 transition">Add Task</button>
             </div>
-
-            <div style={{ display: "flex", gap: "20px", padding: "20px" }}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {columns.map((col) => (
                     <div
                         key={col}
-                        style={{
-                            flex: 1,
-                            border: "1px solid gray",
-                            padding: "5px",
-                            borderRadius: "8px",
-                            background: "#fafafa",
-                            height: "400px",
-                            textAlign: "center",
-                            overflowY: "auto"
-                        }}
-                    >
-                        <h2>{col}</h2>
-                        {tasks.filter((task) => task.column === col)
-                            .map((task) => (
-                                <div
-                                    key={task.id}
-                                    style={{
-                                        padding: "5px",
-                                        margin: "5px 0",
-                                        background: "#f0f0f0",
-                                        borderRadius: "3px",
-                                        boxShadow: "0 2px 5px rgba(0,0,0,0.1)"
-                                    }}
-                                >
-                                    <strong>{task.title}</strong>
-                                    <div style={{ marginTop: "8px" }}>
-                                        {/* Move Button */}
-                                        {col !== "Done" && (
-                                            <button
-                                                onClick={() =>
-                                                    socket.emit("task:move", {
-                                                        id: task.id,
-                                                        newColumn:
-                                                            col === "To Do"
-                                                                ? "In Progress"
-                                                                : "Done"
-                                                    })
-                                                }
-                                                style={{ marginRight: "5px" }}
-                                            >
-                                                Move →
-                                            </button>
-                                        )}
-                                        <button
-                                            onClick={() =>
-                                                socket.emit("task:delete", task.id)
-                                            }
-                                        >
-                                            Delete
-                                        </button>
+                        className="bg-teal-700 flex justify-center items-center flex-col rounded-2xl shadow-md px-4">
 
-                                    </div>
-                                </div>
-                         ))}
-                         </div>
-                    ))}
+                        <div className="flex justify-between items-center mb-4">
+                            <h2 className="font-semibold text-lg text-white">{col}</h2>
+                            <span className="text-sm text-gray-400">
+                                {
+                                    tasks.filter((t) => t.column === col).length
+                                }
+                            </span>
+                        </div>
+
+                        <div className="flex flex-col gap-4 max-h-[500px] overflow-y-auto pr-1">
+                            {
+                                tasks.filter((task) => task.column === col)
+                                    .map((task) => (
+                                        <div
+                                            key={task.id}
+                                            className="bg-gray-50 p-4 rounded-xl shadow hover:shadow-md transition">
+                                            <p className="font-medium text-gray-800">
+                                                {task.title}
+                                            </p>
+                                        </div>
+                                    ))}
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );
